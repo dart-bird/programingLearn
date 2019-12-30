@@ -1,0 +1,7 @@
+https://www.virtualbox.org/wiki/Downloads
+
+Virtual Box & Extension install
+
+https://drive.google.com/open?id=1dGsTegZHt2nhVjIDRy3U3fiqhG5vP5h-
+
+칼리리눅스ova 파일, virtual box 파일 virtual box 는 홈페이지 업데이트 확인 할 것

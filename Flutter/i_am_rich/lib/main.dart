@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Image(
-            image: NetworkImage('http://www.bricon.co.kr/shop/data/goods/1541962004958l0.png'),
-          ),
+            image: AssetImage('images/diamond.png')
+            ),
         ),
       )
     );

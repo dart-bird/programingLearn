@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
 ```
 ## About Code
 
-### Scaffold
+### Scaffold Widget
 ```
 import 'package:flutter/material.dart';
 
@@ -103,3 +103,35 @@ images/*.png -> images에 존재하는 모든 png파일을 읽겠다라는 뜻.
 **IOS** -> ios/Runner/Assets.xcassets/Applcon.appiconset/  
 **ANDROID** 는 mipmap 폴더에 하나하나 들어있음.  하나하나 교체 해주어야함.  
 **IOS** 는 Contents.json 수정과 함께 *.png 들을 교체 해줘야함. (json파일 안건드리면 손과 머리가 고생...)  
+
+### SafeArea Widget
+SafeArea 는 스마트폰의 크기에 맞춰서 화면 크기를 맞춰준다.  
+**EX)**  
+```
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build (BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.teal,
+        body: SafeArea(
+          child: Container(
+            height: 100.0,
+            width: 100.0,
+            margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0), //수직으로 20 수평으로 10 만큼 띄움.
+            color: Colors.white,
+            child: Text("Hello"),
+            ),
+        ),
+      ),
+    );
+  }
+}
+```
+margin: EdgeInsets.* (너비 처리 일괄적용, 부분적용 가능)  

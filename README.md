@@ -258,4 +258,118 @@ class MyApp extends StatelessWidget {
 위 코드를 적용시키면 위 사진과 같이 순서대로 빨간색, 노란색, 파란색 상자가 나오게 된다.  
 `mainAxisAlignment: MainAxisAlignment.spaceBetween`- 아래 자식들을 일정하게 띄워놓는다. spaceBetween말고도 여러개가 존재한다.  
 `crossAxisAlignment: CrossAxisAlignment.center` - 아래 자식들을 모두 중앙으로 위치 시킨다. center말고도 start, end 등 여러개 존재한다.  
-`double.infinity` - 해당 길이를 최대치로 설정한다.
+`double.infinity` - 해당 길이를 최대치로 설정한다.  
+### Card  
+우리는 Container를 이용해서 표현해왔다.  
+하지만 Container는 모서리 부분때문에 딱딱한 느낌이 든다.  
+이를 해결하기 위해서 Card widget을 사용하면 모서리 부분이 라운딩처리가 되면서 부드러워진다.  
+대신에 Card 위젯은 Container 위젯에서 사용 가능한 padding 이 불가능하다.  
+```
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.blue[100],
+        body: SafeArea(
+          child: Column(
+            children: <Widget>[
+              CircleAvatar(
+                radius: 50.0,
+                backgroundImage: AssetImage('image/krumaska.png'),
+              ),
+              Text(
+                'Krumaska',
+                style: TextStyle(
+                  fontFamily: 'FredokaOne',
+                  fontSize: 40.0,
+                  color: Colors.white,
+                ),
+              ),
+              Text(
+                'GETGIT',
+                style: TextStyle(
+                  fontFamily: 'Overpass',
+                  fontSize: 20.0,
+                  color: Colors.white,
+                  letterSpacing: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Card(
+                color: Colors.white,
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.language,
+                    color: Colors.lightBlue,
+                  ),
+                  title: Text(
+                    'https://github.com/krumaska',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Overpass',
+                      color: Colors.blue.shade900,
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                color: Colors.white,
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                child: Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.email,
+                      color: Colors.lightBlue,
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Text(
+                      'okokrt@gmail.com',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'Overpass',
+                        color: Colors.blue.shade900,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+```
+## 짚고 넘어가기 
+### Text Style
+폰에 출력되는 글자 스타일에 관한 위젯이다.  
+`fontsize` - 글 크기를 설정  
+`fontFamily` - 미리 설정한 폰트스타일을 사용하도록 설정  
+**적용하는 방법**  
+pubspec.yaml 파일에서 이미지를 추가할 때 비슷한 방식으로 코드를 작성하면 된다.  
+```
+fonts:
+    - family: FredokaOne
+      fonts:
+        - asset: fonts/FredokaOne-Regular.ttf
+```
+위 코드는 예시로 FredokaOne 이라는 폰트를 적용시키기 위한 코드이다.  
+### CircleAvatar  
+이 위젯은 모양이 원인 모양으로 만들어주는 위젯이다.  
+보통 프로파일 이미지와 같은 곳에 사용되는 위젯.  
+### ListTile  
+원래 Card 위젯을 이용하면 Padding 위젯을 사용해야 하지만 ... 코드가 너무 길어지기에 ListTile 을 사용한다. 
+이놈을 이용하면 사용자가 보기좋게 자동적으로 padding을 해준다.  
+그리고 아이콘과 텍스트 사이에 Sized Box를 넣으면서 간격을 띄우느라 고생하는 작업을 덜어주어서 더더욱 좋은 놈이다.  

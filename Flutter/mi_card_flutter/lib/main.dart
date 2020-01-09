@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.blue[100],
         body: SafeArea(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               CircleAvatar(
                 radius: 50.0,
@@ -35,50 +36,46 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Card(
-                color: Colors.white,
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.language,
-                      color: Colors.lightBlue,
-                    ),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    Text(
-                      'https://github.com/krumaska',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'Overpass',
-                        color: Colors.blue.shade900,
-                      ),
-                    ),
-                  ],
+              SizedBox(
+                height: 20.0,
+                width: 150.0,
+                child: Divider(
+                  color: Colors.white,
+                  thickness: 2.0,
                 ),
               ),
               Card(
                 margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
-                color: Colors.white,
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.email,
-                      color: Colors.lightBlue,
+                child: ListTile(
+                  leading: Icon(
+                    Icons.language,
+                    color: Colors.lightBlue,
+                  ),
+                  title: Text(
+                    'https://github.com/krumaska',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Overpass',
+                      color: Colors.blue.shade900,
                     ),
-                    SizedBox(
-                      width: 10.0,
+                  ),
+                ),
+              ),
+              Card(
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.email,
+                    color: Colors.lightBlue,
+                  ),
+                  title: Text(
+                    'okokrt@gmail.com',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Overpass',
+                      color: Colors.blue.shade900,
                     ),
-                    Text(
-                      'okokrt@gmail.com',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'Overpass',
-                        color: Colors.blue.shade900,
-                      ),
-                    )
-                  ],
+                  ),
                 ),
               ),
             ],

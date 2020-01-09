@@ -103,10 +103,44 @@ images/*.png -> images에 존재하는 모든 png파일을 읽겠다라는 뜻.
 **IOS** -> ios/Runner/Assets.xcassets/Applcon.appiconset/  
 **ANDROID** 는 mipmap 폴더에 하나하나 들어있음.  하나하나 교체 해주어야함.  
 **IOS** 는 Contents.json 수정과 함께 *.png 들을 교체 해줘야함. (json파일 안건드리면 손과 머리가 고생...)  
+### Container Widget
+Container 는 박스로 생각하면 된다.  
+쉬운 예시로는 다음과 같이 Container를 이용하여 hello world 라는 텍스트 상자를 만드는 것이다.  
+```
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.teal,
+        body: Container(
+          color: Colors.white,
+          child: Text("hello world"), 
+        ),
+      ),
+    );
+  }
+}
+```  
+위 코드와 같이  
+`color: Colors.white` - 텍스트 상자를 하양색으로 설정  
+`child: Text("hello world")` - 텍스트 상자안에 hello world 라는 글을 쓴다.  
+를 통해 폰 화면에 hello world 라는 텍스트 상자가 보인다.  
+![image](https://user-images.githubusercontent.com/51515055/72029039-f9db4900-32c7-11ea-91c2-0f4f34f9b150.png)  
+
+하지만 폰 상태바에 표시되는 것을 볼 수 있다.  
+우리는 이를 해결하기 위해 다음 위젯을 사용하면 된다.
 
 ### SafeArea Widget
 SafeArea 는 스마트폰의 크기에 맞춰서 화면 크기를 맞춰준다.  
 **EX)**  
+
 ```
 import 'package:flutter/material.dart';
 
@@ -122,11 +156,8 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.teal,
         body: SafeArea(
           child: Container(
-            height: 100.0,
-            width: 100.0,
-            margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0), //수직으로 20 수평으로 10 만큼 띄움.
             color: Colors.white,
-            child: Text("Hello"),
+            child: Text("hello world"),
             ),
         ),
       ),
@@ -134,4 +165,10 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+
+![image](https://user-images.githubusercontent.com/51515055/72029457-4ffcbc00-32c9-11ea-92e5-04d4c11f3f86.png)  
+
+위 코드를 적용시켜보면 위 사진과 같이 텍스트 상자가 자동적으로 맞춰준 것을 볼 수 있다.  
+
+
 margin: EdgeInsets.* (너비 처리 일괄적용, 부분적용 가능)  

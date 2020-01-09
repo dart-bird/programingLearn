@@ -264,6 +264,7 @@ class MyApp extends StatelessWidget {
 하지만 Container는 모서리 부분때문에 딱딱한 느낌이 든다.  
 이를 해결하기 위해서 Card widget을 사용하면 모서리 부분이 라운딩처리가 되면서 부드러워진다.  
 대신에 Card 위젯은 Container 위젯에서 사용 가능한 padding 이 불가능하다.  
+Card 는 기본색상이 하얀색이므로 하얀색을 쓴다면 굳이 color: 사용을 할 필요가 없다.  
 ```
 import 'package:flutter/material.dart';
 
@@ -303,7 +304,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               Card(
-                color: Colors.white,
+                //color: Colors.white,
                 margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
                 child: ListTile(
                   leading: Icon(
@@ -321,26 +322,21 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               Card(
-                color: Colors.white,
+                //color: Colors.white,
                 margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.email,
-                      color: Colors.lightBlue,
+                child: ListTile(
+                  leading: Icon(
+                    Icons.email,
+                    color: Colors.lightBlue,
+                  ),
+                  title: Text(
+                    'okokrt@gmail.com',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Overpass',
+                      color: Colors.blue.shade900,
                     ),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    Text(
-                      'okokrt@gmail.com',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'Overpass',
-                        color: Colors.blue.shade900,
-                      ),
-                    )
-                  ],
+                  ),
                 ),
               ),
             ],

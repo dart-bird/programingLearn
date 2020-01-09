@@ -170,5 +170,92 @@ class MyApp extends StatelessWidget {
 
 위 코드를 적용시켜보면 위 사진과 같이 텍스트 상자가 자동적으로 맞춰준 것을 볼 수 있다.  
 
+### Container 의 margin 과 padding
+**EX)**  
+```
+import 'package:flutter/material.dart';
 
-margin: EdgeInsets.* (너비 처리 일괄적용, 부분적용 가능)  
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.teal,
+        body: SafeArea(
+          child: Container(
+            height: 100.0,
+            width: 100.0,
+            margin: EdgeInsets.all(left: 20.0),
+            padding: EdgeInsets.all(20.0),
+            color: Colors.white,
+            child: Text("hello world"),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+```  
+위 코드를 적용시키면 다음 사진과 같이 적용이 된다.
+![image](https://user-images.githubusercontent.com/51515055/72030635-057d3e80-32cd-11ea-80c4-4b1968e2be63.png)  
+위 사진은 Dart DevTools 를 사용하여 Debug Paint를 적용시켜 너비 화인을 한 사진이다.  
+`height: 100.0`,`width: 100.0` 을 통해 Container의 크기가 100x100 이 된 것을 볼 수 있다.  
+`margin: EdgInsets.all(20.0)` - 텍스트 상자 바깥 모든 범위를 20씩 주어서 칸을 띄움.
+`padding: EdgInsets.all(20.0)` - 텍스트 상자안에 있는 글 상자 바깥 모든 범위를 20씩 주어서 칸을 띄움.
+EdgeInsets.* (너비 처리 일괄적용, 부분적용 가능 하게 하는 메소드)  
+
+### Row and Column  
+Container 를 사용하게 되면 여러개를 사용해야하는데 위 Container 예제를 보면 한개의 Container밖에 사용하지 못한다.  
+여러개의 Container를 사용하려면 `child: Row` 나 `child: Column` 으로 `children: <Widget> []` 안에 여러개의 Container를 구성하면 된다.  
+**EX)**  
+```
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.teal,
+        body: SafeArea(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                height: double.infinity,
+                width: 100.0,
+                color: Colors.red,
+              ),
+              Container(
+                height: 100.0,
+                width: 100.0,
+                color: Colors.yellow,
+              ),
+              Container(
+                height: double.infinity,
+                width: 100.0,
+                color: Colors.blue,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+```  
+![image](https://user-images.githubusercontent.com/51515055/72033429-a1ab4380-32d5-11ea-880d-fc797f1b7657.png)  
+위 코드를 적용시키면 위 사진과 같이 순서대로 빨간색, 노란색, 파란색 상자가 나오게 된다.  
+`mainAxisAlignment: MainAxisAlignment.spaceBetween`- 아래 자식들을 일정하게 띄워놓는다. spaceBetween말고도 여러개가 존재한다.  
+`crossAxisAlignment: CrossAxisAlignment.center` - 아래 자식들을 모두 중앙으로 위치 시킨다. center말고도 start, end 등 여러개 존재한다.  
+`double.infinity` - 해당 길이를 최대치로 설정한다.

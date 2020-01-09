@@ -9,26 +9,77 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.blue[100],
         body: SafeArea(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: Column(
             children: <Widget>[
-              Container(
-                height: double.infinity,
-                width: 100.0,
-                color: Colors.red,
+              CircleAvatar(
+                radius: 50.0,
+                backgroundImage: AssetImage('image/krumaska.png'),
               ),
-              Container(
-                height: 100.0,
-                width: 100.0,
-                color: Colors.yellow,
+              Text(
+                'Krumaska',
+                style: TextStyle(
+                  fontFamily: 'FredokaOne',
+                  fontSize: 40.0,
+                  color: Colors.white,
+                ),
               ),
-              Container(
-                height: double.infinity,
-                width: 100.0,
-                color: Colors.blue,
+              Text(
+                'GETGIT',
+                style: TextStyle(
+                  fontFamily: 'Overpass',
+                  fontSize: 20.0,
+                  color: Colors.white,
+                  letterSpacing: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Card(
+                color: Colors.white,
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                child: Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.language,
+                      color: Colors.lightBlue,
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Text(
+                      'https://github.com/krumaska',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'Overpass',
+                        color: Colors.blue.shade900,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Card(
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                color: Colors.white,
+                child: Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.email,
+                      color: Colors.lightBlue,
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Text(
+                      'okokrt@gmail.com',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'Overpass',
+                        color: Colors.blue.shade900,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ],
           ),

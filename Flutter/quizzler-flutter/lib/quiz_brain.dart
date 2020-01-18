@@ -31,10 +31,15 @@ class QuizBrain {
         true),
   ];
 
-  void nextQuestion() {
+  bool nextQuestion() {
+    bool isEndofQuiz = false;
     if (_questionNumber < _questionBank.length - 1) {
       _questionNumber++;
-    } 
+    } else {
+      isEndofQuiz = true;
+      _questionNumber = 0;
+    }
+    return isEndofQuiz;
   }
 
   String getQuestionText() {

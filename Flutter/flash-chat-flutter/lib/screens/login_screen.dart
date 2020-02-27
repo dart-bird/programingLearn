@@ -24,84 +24,80 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.white,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
-        child: Center(
-          child: SingleChildScrollView(
-            padding: EdgeInsets.all(0),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Hero(
-                    tag: 'logo',
-                    child: Container(
-                      height: 200.0,
-                      child: Image.asset('images/logo.png'),
-                    ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Flexible(
+                child: Hero(
+                  tag: 'logo',
+                  child: Container(
+                    height: 200.0,
+                    child: Image.asset('images/logo.png'),
                   ),
-                  SizedBox(
-                    height: 48.0,
-                  ),
-                  TextField(
-                    keyboardType: TextInputType.emailAddress,
-                    textAlign: TextAlign.center,
-                    onChanged: (value) {
-                      //Do something with the user input.
-                      email = value;
-                    },
-                    decoration: kTextFieldDecoration.copyWith(
-                      hintText: '이메일을 빠르게 입력해',
-                    ),
-                  ),
-                  SizedBox(
-                    height: 8.0,
-                  ),
-                  TextField(
-                    textAlign: TextAlign.center,
-                    obscureText: true,
-                    onChanged: (value) {
-                      //Do something with the user input.
-                      password = value;
-                    },
-                    decoration: kTextFieldDecoration.copyWith(
-                      hintText: '비밀번호를 빠르게 입력해',
-                    ),
-                  ),
-                  SizedBox(
-                    height: 24.0,
-                  ),
-                  RoundedButton(
-                    title: '빠르게 로그인',
-                    color: Colors.lightBlueAccent,
-                    onPressed: () async {
-                      setState(() {
-                        showSpinner = true;
-                      });
-                      print(email);
-                      print(password);
-                      try {
-                        final currentUser =
-                            await _auth.signInWithEmailAndPassword(
-                                email: email, password: password);
-                        if (currentUser != null) {
-                          Navigator.pushNamed(context, ChatScreen.id);
-                        }
-                        print(currentUser);
-                        setState(() {
-                          showSpinner = false;
-                        });
-                      } catch (e) {
-                        print(e);
-                        setState(() {
-                          showSpinner = false;
-                        });
-                      }
-                    },
-                  ),
-                ],
+                ),
               ),
-            ),
+              SizedBox(
+                height: 48.0,
+              ),
+              TextField(
+                keyboardType: TextInputType.emailAddress,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  //Do something with the user input.
+                  email = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(
+                  hintText: '이메일을 빠르게 입력해',
+                ),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              TextField(
+                textAlign: TextAlign.center,
+                obscureText: true,
+                onChanged: (value) {
+                  //Do something with the user input.
+                  password = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(
+                  hintText: '비밀번호를 빠르게 입력해',
+                ),
+              ),
+              SizedBox(
+                height: 24.0,
+              ),
+              RoundedButton(
+                title: '빠르게 로그인',
+                color: Colors.lightBlueAccent,
+                onPressed: () async {
+                  setState(() {
+                    showSpinner = true;
+                  });
+                  print(email);
+                  print(password);
+                  try {
+                    final currentUser = await _auth.signInWithEmailAndPassword(
+                        email: email, password: password);
+                    if (currentUser != null) {
+                      Navigator.pushNamed(context, ChatScreen.id);
+                    }
+                    print(currentUser);
+                    setState(() {
+                      showSpinner = false;
+                    });
+                  } catch (e) {
+                    print(e);
+                    setState(() {
+                      showSpinner = false;
+                    });
+                  }
+                },
+              ),
+            ],
           ),
         ),
       ),

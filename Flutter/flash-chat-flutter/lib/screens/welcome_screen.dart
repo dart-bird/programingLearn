@@ -83,14 +83,14 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               height: 48.0,
             ),
             RoundedButton(
-              title: '로그인',
+              title: '빠르게 로그인',
               color: Colors.lightBlueAccent,
               onPressed: () {
                 Navigator.pushNamed(context, LoginScreen.id);
               },
             ),
             RoundedButton(
-              title: '회원가입',
+              title: '빠르게 회원가입',
               color: Colors.lightBlueAccent,
               onPressed: () {
                 Navigator.pushNamed(context, RegistrationScreen.id);

@@ -1,9 +1,15 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flash_chat/components/rounded_button.dart';
 import 'package:flash_chat/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'login_screen.dart';
+
+final firebaseMessaging = FirebaseMessaging();
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcome';
@@ -17,7 +23,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   Animation animation;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller = AnimationController(
       duration: Duration(seconds: 5),
@@ -62,17 +67,19 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           children: <Widget>[
             Row(
               children: <Widget>[
-                Hero(
-                  tag: 'logo',
-                  child: Container(
-                    child: Image.asset('images/logo.png'),
-                    height: 60,
+                Flexible(
+                  child: Hero(
+                    tag: 'logo',
+                    child: Container(
+                      child: Image.asset('images/logo.png'),
+                      height: 60,
+                    ),
                   ),
                 ),
                 TypewriterAnimatedTextKit(
-                  text: ['성질 급한 채팅'],
+                  text: ['성질 급한 채팅 (성급채)'],
                   textStyle: TextStyle(
-                    fontSize: 45.0,
+                    fontSize: 40.0,
                     fontWeight: FontWeight.w900,
                   ),
                   speed: Duration(milliseconds: 100),
